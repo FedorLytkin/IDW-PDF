@@ -1,0 +1,28 @@
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\bin\Debug\IDW-PDF.exe.config
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\bin\Debug\IDW-PDF.exe
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\bin\Debug\IDW-PDF.pdb
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\bin\Debug\IDW-PDF.xml
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.vbprojResolveAssemblyReference.cache
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.Resources.resources
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.vbproj.GenerateResource.Cache
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.exe
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.xml
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.pdb
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.vbproj.ResolveComReference.cache
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.App_info.resources
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.fOptions.resources
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.SaveAsPDF.resources
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\bin\Debug\IDW-PDF.exe.config
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.vbproj.ResolveComReference.cache
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.exe
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.xml
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.pdb
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\bin\Debug\IDW-PDF.exe
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\bin\Debug\IDW-PDF.pdb
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\bin\Debug\IDW-PDF.xml
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.vbprojResolveAssemblyReference.cache
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.App_info.resources
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.fOptions.resources
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.SaveAsPDF.resources
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.Resources.resources
+D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.vbproj.GenerateResource.Cache
