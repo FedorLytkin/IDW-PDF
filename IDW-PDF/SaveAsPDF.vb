@@ -99,7 +99,11 @@ Public Class SaveAsPDF
         End If
     End Sub
     Public Shared Function AppVersNOTValidStrongMessage() As Boolean
-        If Not AppVersNOTValidStrong Then MessageBox.Show($"Версия CAD-системы({ProgramVersion}) не совпадает с рекомендованной версией {ProgramVersionFlag}." & vbNewLine & $"Обновите {System.Windows.Forms.Application.ProductName} до требуемой версии CAD системы либо установите версию {ProgramVersionFlag}", System.Windows.Forms.Application.ProductName)
+        If Not AppVersNOTValidStrong Then MessageBox.Show($"Версия CAD-системы (Inventor {ProgramVersion}) не совпадает с рекомендованной версией Inventor {ProgramVersionFlag}." & vbNewLine &
+                                                          $"Обновите {System.Windows.Forms.Application.ProductName} до требуемой версии CAD системы либо установите версию Inventor{ProgramVersionFlag}",
+                                                          System.Windows.Forms.Application.ProductName,
+                                                          MessageBoxButtons.OK,
+                                                          MessageBoxIcon.Error)
         Return AppVersNOTValidStrong
     End Function
     Sub PDF_export()
@@ -460,11 +464,11 @@ Public Class SaveAsPDF
         This_Demo_App = CryptoClass_.Form_LoadTrue(True)
 
         If This_Demo_App Then
-            Me.Text = System.Windows.Forms.Application.ProductName & " v" + System.Windows.Forms.Application.ProductVersion & $" (Inventor {ProgramVersion})" & " !!!This DemoVersion!!!"
+            Me.Text = System.Windows.Forms.Application.ProductName & " v" + System.Windows.Forms.Application.ProductVersion & $" (Inventor {ProgramVersionFlag})" & " !!!This DemoVersion!!!"
             КонвертироватьВыделенноеToolStripMenuItem.Enabled = False
             МенеджерЛицензииToolStripMenuItem.Visible = True
         Else
-            Me.Text = System.Windows.Forms.Application.ProductName & " v" + System.Windows.Forms.Application.ProductVersion & $" (Inventor {ProgramVersion})"
+            Me.Text = System.Windows.Forms.Application.ProductName & " v" + System.Windows.Forms.Application.ProductVersion & $" (Inventor {ProgramVersionFlag})"
             КонвертироватьВыделенноеToolStripMenuItem.Enabled = True
             МенеджерЛицензииToolStripMenuItem.Visible = False
         End If
