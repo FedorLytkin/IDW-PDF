@@ -69,7 +69,7 @@ Public Class SaveAsPDF
     End Sub
     Sub import_drawing()
         Dim dir As String = ""
-        Dim fb As New FolderBrowserDialog
+        Dim fb As New FolderBrowserDialogEx
         With fb
             .Description = "Выберите папку с чертежами"
             If .ShowDialog = System.Windows.Forms.DialogResult.OK Then
@@ -338,6 +338,11 @@ Public Class SaveAsPDF
     End Sub
 
     Private Sub УдалитьЗаписьToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles УдалитьЗаписьToolStripMenuItem.Click
+        If This_Demo_App Then
+            MsgBox("Функция не доступна для демо версии!" & vbCr & "Обратитесь к разработчику", MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
         ListBox1.Items.Remove(ListBox1.SelectedItem)
     End Sub
 
@@ -471,8 +476,17 @@ Public Class SaveAsPDF
 
     Sub select_save_folder_path()
         Dim dir As String = ""
-        Dim fb As New FolderBrowserDialog
-        With fb
+        'Dim fb As New FolderBrowserDialog
+        'With fb
+        '    .Description = "Укажите место хранения файлов"
+        '    If .ShowDialog = System.Windows.Forms.DialogResult.OK Then
+        '        save_folder_path = .SelectedPath
+        '    Else
+        '        Exit Sub
+        '    End If
+        'End With
+        Dim fbEx As FolderBrowserDialogEx = New FolderBrowserDialogEx
+        With fbEx
             .Description = "Укажите место хранения файлов"
             If .ShowDialog = System.Windows.Forms.DialogResult.OK Then
                 save_folder_path = .SelectedPath

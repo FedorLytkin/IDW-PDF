@@ -50,31 +50,34 @@ Partial Class SaveAsPDF
         Me.ОПрограммеToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.МенеджерЛицензииToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.SplitContainer1.Panel1.SuspendLayout()
+        Me.SplitContainer1.Panel2.SuspendLayout()
+        Me.SplitContainer1.SuspendLayout()
         Me.SuspendLayout()
         '
         'lstResults
         '
-        Me.lstResults.Dock = System.Windows.Forms.DockStyle.Bottom
+        Me.lstResults.Dock = System.Windows.Forms.DockStyle.Fill
         Me.lstResults.FormattingEnabled = True
-        Me.lstResults.Location = New System.Drawing.Point(0, 222)
+        Me.lstResults.Location = New System.Drawing.Point(0, 0)
         Me.lstResults.Name = "lstResults"
         Me.lstResults.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended
-        Me.lstResults.Size = New System.Drawing.Size(447, 95)
+        Me.lstResults.Size = New System.Drawing.Size(447, 109)
         Me.lstResults.TabIndex = 12
         '
         'ListBox1
         '
         Me.ListBox1.AllowDrop = True
-        Me.ListBox1.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.ListBox1.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.ListBox1.Dock = System.Windows.Forms.DockStyle.Fill
         Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(-1, 36)
+        Me.ListBox1.Location = New System.Drawing.Point(0, 0)
         Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(447, 186)
+        Me.ListBox1.Size = New System.Drawing.Size(447, 168)
         Me.ListBox1.TabIndex = 13
         '
         'ContextMenuStrip1
@@ -241,15 +244,32 @@ Partial Class SaveAsPDF
         Me.ProgressBar1.TabIndex = 15
         Me.ProgressBar1.Visible = False
         '
+        'SplitContainer1
+        '
+        Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 36)
+        Me.SplitContainer1.Name = "SplitContainer1"
+        Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
+        '
+        'SplitContainer1.Panel1
+        '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.ListBox1)
+        '
+        'SplitContainer1.Panel2
+        '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.lstResults)
+        Me.SplitContainer1.Size = New System.Drawing.Size(447, 281)
+        Me.SplitContainer1.SplitterDistance = 168
+        Me.SplitContainer1.TabIndex = 16
+        '
         'SaveAsPDF
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(447, 317)
+        Me.Controls.Add(Me.SplitContainer1)
         Me.Controls.Add(Me.ProgressBar1)
         Me.Controls.Add(Me.MenuStrip1)
-        Me.Controls.Add(Me.ListBox1)
-        Me.Controls.Add(Me.lstResults)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
         Me.MinimumSize = New System.Drawing.Size(463, 356)
@@ -258,6 +278,10 @@ Partial Class SaveAsPDF
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
+        Me.SplitContainer1.Panel1.ResumeLayout(False)
+        Me.SplitContainer1.Panel2.ResumeLayout(False)
+        CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.SplitContainer1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -289,4 +313,5 @@ Partial Class SaveAsPDF
     Friend WithEvents УказатьПапкуХраненияToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ДоToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents МенеджерЛицензииToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SplitContainer1 As SplitContainer
 End Class
