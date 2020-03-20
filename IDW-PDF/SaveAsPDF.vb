@@ -13,6 +13,27 @@ Public Class SaveAsPDF
     Public sw As StreamWriter
     Public path, save_folder_path As String
     Public filename As String = "\IDW_PDF_report"
+    Public invApp As Inventor.Application = Nothing
+    Public Sub CadInicial()
+        Try
+            invApp = GetObject(, "Inventor.Application")
+        Catch ex As Exception
+        End Try
+
+        ' If Inventor isn't running, start it.
+        If invApp Is Nothing Then
+            Try
+                invApp = CreateObject("Inventor.Application")
+                invApp.Visible = True
+            Catch ex As Exception
+                MsgBox("Inventor не работает и не может быть запущен.  Запустите Inventor повторите снова.")
+                Exit Sub
+            End Try
+        End If
+        ProgramVersion = invApp.ComparisonVersion
+        AppVersNOTValidStrong = System.Text.RegularExpressions.Regex.IsMatch(ProgramVersion, ProgramVersionFlag)
+
+    End Sub
     Private Sub СправкаToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles СправкаToolStripMenuItem.Click
         INFOrmation()
     End Sub
@@ -91,25 +112,6 @@ Public Class SaveAsPDF
             Exit Sub
         End If
         ' Connect to Inventor.
-        Dim invApp As Inventor.Application = Nothing
-        Try
-            invApp = GetObject(, "Inventor.Application")
-        Catch ex As Exception
-        End Try
-
-        ' If Inventor isn't running, start it.
-        If invApp Is Nothing Then
-            Try
-                invApp = CreateObject("Inventor.Application")
-                invApp.Visible = True
-            Catch ex As Exception
-                MsgBox("Inventor не работает и не может быть запущен.  Запустите Inventor повторите снова.")
-                Exit Sub
-            End Try
-        End If
-        ProgramVersion = invApp.ComparisonVersion
-        AppVersNOTValidStrong = System.Text.RegularExpressions.Regex.IsMatch(ProgramVersion, ProgramVersionFlag)
-
         If AppVersNOTValidStrongMessage() Then Return
 
         ProgressBar1.Visible = True
@@ -198,30 +200,6 @@ Public Class SaveAsPDF
             MsgBox("Функция не доступна для демо версии!" & vbCr & "Обратитесь к разработчику", MessageBoxIcon.Error)
             Exit Sub
         End If
-        ''если сохраняем в другой папке
-        'If fOptions.get_regisrt_value("save_path_method", True) = False And save_folder_path Is Nothing Then
-        '    select_save_folder_path()
-        'End If
-        ' Connect to Inventor.
-        Dim invApp As Inventor.Application = Nothing
-        Try
-            invApp = GetObject(, "Inventor.Application")
-        Catch ex As Exception
-        End Try
-
-        ' If Inventor isn't running, start it.
-        If invApp Is Nothing Then
-            Try
-                invApp = CreateObject("Inventor.Application")
-                invApp.Visible = True
-            Catch ex As Exception
-                MsgBox("Inventor не работает и не может быть запущен.  Запустите Inventor повторите снова.")
-                Exit Sub
-            End Try
-        End If
-        ProgramVersion = invApp.ComparisonVersion
-        AppVersNOTValidStrong = System.Text.RegularExpressions.Regex.IsMatch(ProgramVersion, ProgramVersionFlag)
-
         If AppVersNOTValidStrongMessage() Then Return
 
         ProgressBar1.Visible = True
@@ -390,26 +368,6 @@ Public Class SaveAsPDF
     End Sub
     Sub open_drawind()
 
-        ' Connect to Inventor.
-        Dim invApp As Inventor.Application = Nothing
-        Try
-            invApp = GetObject(, "Inventor.Application")
-        Catch ex As Exception
-        End Try
-
-        ' If Inventor isn't running, start it.
-        If invApp Is Nothing Then
-            Try
-                invApp = CreateObject("Inventor.Application")
-                invApp.Visible = True
-            Catch ex As Exception
-                MsgBox("Inventor не работает и не может быть запущен.  Запустите Inventor повторите снова.")
-                Exit Sub
-            End Try
-        End If
-        ProgramVersion = invApp.ComparisonVersion
-        AppVersNOTValidStrong = System.Text.RegularExpressions.Regex.IsMatch(ProgramVersion, ProgramVersionFlag)
-
         If AppVersNOTValidStrongMessage() Then Return
 
         Dim Drawing As String = ListBox1.SelectedItem
@@ -488,7 +446,9 @@ Public Class SaveAsPDF
     End Sub
 
     Private Sub SaveAsPDF_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        CadInicial()
         DemoVers_StartWindows()
+        Otp_Folder_Create()
     End Sub
     Private Sub DemoVers_StartWindows()
         Dim CryptoClass_ As CryptoClass = New CryptoClass()
@@ -504,6 +464,11 @@ Public Class SaveAsPDF
             МенеджерЛицензииToolStripMenuItem.Visible = False
         End If
     End Sub
+
+    Private Sub МенеджерЛицензииToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles МенеджерЛицензииToolStripMenuItem.Click
+        LicForm2.ShowDialog()
+    End Sub
+
     Sub select_save_folder_path()
         Dim dir As String = ""
         Dim fb As New FolderBrowserDialog

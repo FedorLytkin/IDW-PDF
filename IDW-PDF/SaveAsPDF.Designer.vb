@@ -48,8 +48,8 @@ Partial Class SaveAsPDF
         Me.ОПрограммеToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.СправкаToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ОПрограммеToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.МенеджерЛицензииToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -226,6 +226,12 @@ Partial Class SaveAsPDF
         Me.ОПрограммеToolStripMenuItem1.Size = New System.Drawing.Size(188, 22)
         Me.ОПрограммеToolStripMenuItem1.Text = "О программе"
         '
+        'МенеджерЛицензииToolStripMenuItem
+        '
+        Me.МенеджерЛицензииToolStripMenuItem.Name = "МенеджерЛицензииToolStripMenuItem"
+        Me.МенеджерЛицензииToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
+        Me.МенеджерЛицензииToolStripMenuItem.Text = "Менеджер лицензии"
+        '
         'ProgressBar1
         '
         Me.ProgressBar1.Dock = System.Windows.Forms.DockStyle.Top
@@ -234,12 +240,6 @@ Partial Class SaveAsPDF
         Me.ProgressBar1.Size = New System.Drawing.Size(447, 12)
         Me.ProgressBar1.TabIndex = 15
         Me.ProgressBar1.Visible = False
-        '
-        'МенеджерЛицензииToolStripMenuItem
-        '
-        Me.МенеджерЛицензииToolStripMenuItem.Name = "МенеджерЛицензииToolStripMenuItem"
-        Me.МенеджерЛицензииToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
-        Me.МенеджерЛицензииToolStripMenuItem.Text = "Менеджер лицензии"
         '
         'SaveAsPDF
         '

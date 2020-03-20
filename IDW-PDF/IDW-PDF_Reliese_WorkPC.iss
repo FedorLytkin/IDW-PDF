@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "IDW-PDF"
-#define MyAppVersion "19.11.16.8"
+#define MyAppVersion "19.11.16.9"
 #define MyAppPublisher "DXFAutoHelp"
 #define MyAppURL "https://vk.com/nasipberli"
 #define MyAppExeName "IDW-PDF.exe"
@@ -23,7 +23,7 @@ DefaultDirName={pf}\{#MyAppName}
 DisableProgramGroupPage=yes
 LicenseFile=C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\bin\Debug\ReadMe.txt
 OutputDir=C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\bin\Release
-OutputBaseFilename=setup
+OutputBaseFilename={#MyAppName}_v{#MyAppVersion}_setup
 Compression=lzma
 SolidCompression=yes
 
