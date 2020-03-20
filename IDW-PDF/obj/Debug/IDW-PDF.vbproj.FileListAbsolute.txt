@@ -25,6 +25,5 @@ D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.fOptions.resources
 D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.SaveAsPDF.resources
 D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.Resources.resources
 D:\Cloud\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.vbproj.GenerateResource.Cache
-C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.vbprojAssemblyReference.cache
 C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.AboutBox1.resources
 C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.LicForm2.resources

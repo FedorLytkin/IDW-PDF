@@ -112,7 +112,7 @@ Public Class SaveAsPDF
             Exit Sub
         End If
         ' Connect to Inventor.
-        If AppVersNOTValidStrongMessage() Then Return
+        If Not AppVersNOTValidStrongMessage() Then Return
 
         ProgressBar1.Visible = True
         ProgressBar1.Minimum = 1
@@ -200,7 +200,7 @@ Public Class SaveAsPDF
             MsgBox("Функция не доступна для демо версии!" & vbCr & "Обратитесь к разработчику", MessageBoxIcon.Error)
             Exit Sub
         End If
-        If AppVersNOTValidStrongMessage() Then Return
+        If Not AppVersNOTValidStrongMessage() Then Return
 
         ProgressBar1.Visible = True
         ProgressBar1.Minimum = 1
@@ -368,7 +368,7 @@ Public Class SaveAsPDF
     End Sub
     Sub open_drawind()
 
-        If AppVersNOTValidStrongMessage() Then Return
+        If Not AppVersNOTValidStrongMessage() Then Return
 
         Dim Drawing As String = ListBox1.SelectedItem
         ' Open the drawing in Inventor
