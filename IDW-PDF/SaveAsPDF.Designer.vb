@@ -49,6 +49,7 @@ Partial Class SaveAsPDF
         Me.СправкаToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ОПрограммеToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProgressBar1 = New System.Windows.Forms.ProgressBar()
+        Me.МенеджерЛицензииToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
@@ -80,58 +81,63 @@ Partial Class SaveAsPDF
         '
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.КонвертироватьВыделенноеToolStripMenuItem, Me.КонвертироватьВсеToolStripMenuItem, Me.ToolStripSeparator2, Me.ДоToolStripMenuItem, Me.УдалитьЗаписьToolStripMenuItem, Me.ОчиститьСписокToolStripMenuItem1, Me.ToolStripSeparator1, Me.ОткрытьЧертежToolStripMenuItem, Me.ОткрытьPDFЧертежаToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(266, 170)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(246, 170)
         '
         'КонвертироватьВыделенноеToolStripMenuItem
         '
         Me.КонвертироватьВыделенноеToolStripMenuItem.Name = "КонвертироватьВыделенноеToolStripMenuItem"
-        Me.КонвертироватьВыделенноеToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.КонвертироватьВыделенноеToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
         Me.КонвертироватьВыделенноеToolStripMenuItem.Text = "Конвертировать выделенное"
         '
         'КонвертироватьВсеToolStripMenuItem
         '
         Me.КонвертироватьВсеToolStripMenuItem.Name = "КонвертироватьВсеToolStripMenuItem"
-        Me.КонвертироватьВсеToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.КонвертироватьВсеToolStripMenuItem.Text = "Конвертировать список (Shift+Ent)"
+        Me.КонвертироватьВсеToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.КонвертироватьВсеToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
+        Me.КонвертироватьВсеToolStripMenuItem.Text = "Конвертировать список"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(262, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(242, 6)
         '
         'ДоToolStripMenuItem
         '
         Me.ДоToolStripMenuItem.Name = "ДоToolStripMenuItem"
-        Me.ДоToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.ДоToolStripMenuItem.Text = "Добавить (Ctr+O)"
+        Me.ДоToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
+        Me.ДоToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
+        Me.ДоToolStripMenuItem.Text = "Добавить"
         '
         'УдалитьЗаписьToolStripMenuItem
         '
         Me.УдалитьЗаписьToolStripMenuItem.Name = "УдалитьЗаписьToolStripMenuItem"
-        Me.УдалитьЗаписьToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.УдалитьЗаписьToolStripMenuItem.Text = "Удалить запись (Delete)"
+        Me.УдалитьЗаписьToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.Delete
+        Me.УдалитьЗаписьToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
+        Me.УдалитьЗаписьToolStripMenuItem.Text = "Удалить запись"
         '
         'ОчиститьСписокToolStripMenuItem1
         '
         Me.ОчиститьСписокToolStripMenuItem1.Name = "ОчиститьСписокToolStripMenuItem1"
-        Me.ОчиститьСписокToolStripMenuItem1.Size = New System.Drawing.Size(265, 22)
-        Me.ОчиститьСписокToolStripMenuItem1.Text = "Очистить список (Ctr+Del)"
+        Me.ОчиститьСписокToolStripMenuItem1.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Delete), System.Windows.Forms.Keys)
+        Me.ОчиститьСписокToolStripMenuItem1.Size = New System.Drawing.Size(245, 22)
+        Me.ОчиститьСписокToolStripMenuItem1.Text = "Очистить список"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(262, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(242, 6)
         '
         'ОткрытьЧертежToolStripMenuItem
         '
         Me.ОткрытьЧертежToolStripMenuItem.Name = "ОткрытьЧертежToolStripMenuItem"
-        Me.ОткрытьЧертежToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
-        Me.ОткрытьЧертежToolStripMenuItem.Text = "Открыть чертеж (Alt+Enter)"
+        Me.ОткрытьЧертежToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Alt Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
+        Me.ОткрытьЧертежToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
+        Me.ОткрытьЧертежToolStripMenuItem.Text = "Открыть чертеж"
         '
         'ОткрытьPDFЧертежаToolStripMenuItem
         '
         Me.ОткрытьPDFЧертежаToolStripMenuItem.Name = "ОткрытьPDFЧертежаToolStripMenuItem"
-        Me.ОткрытьPDFЧертежаToolStripMenuItem.Size = New System.Drawing.Size(265, 22)
+        Me.ОткрытьPDFЧертежаToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
         Me.ОткрытьPDFЧертежаToolStripMenuItem.Text = "Открыть PDF чертежа"
         '
         'MenuStrip1
@@ -153,14 +159,16 @@ Partial Class SaveAsPDF
         'ВыбратьБланкToolStripMenuItem
         '
         Me.ВыбратьБланкToolStripMenuItem.Name = "ВыбратьБланкToolStripMenuItem"
-        Me.ВыбратьБланкToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
-        Me.ВыбратьБланкToolStripMenuItem.Text = "Добавить (Ctr+O)"
+        Me.ВыбратьБланкToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
+        Me.ВыбратьБланкToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.ВыбратьБланкToolStripMenuItem.Text = "Добавить"
         '
         'ОчиститьСписокToolStripMenuItem
         '
         Me.ОчиститьСписокToolStripMenuItem.Name = "ОчиститьСписокToolStripMenuItem"
-        Me.ОчиститьСписокToolStripMenuItem.Size = New System.Drawing.Size(220, 22)
-        Me.ОчиститьСписокToolStripMenuItem.Text = "Очистить список (Ctr+Del)"
+        Me.ОчиститьСписокToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Delete), System.Windows.Forms.Keys)
+        Me.ОчиститьСписокToolStripMenuItem.Size = New System.Drawing.Size(219, 22)
+        Me.ОчиститьСписокToolStripMenuItem.Text = "Очистить список"
         '
         'ДействиеToolStripMenuItem
         '
@@ -172,14 +180,16 @@ Partial Class SaveAsPDF
         'ПеревестиБланкиToolStripMenuItem
         '
         Me.ПеревестиБланкиToolStripMenuItem.Name = "ПеревестиБланкиToolStripMenuItem"
-        Me.ПеревестиБланкиToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
-        Me.ПеревестиБланкиToolStripMenuItem.Text = "Конвертировать (Ctrl+Enter)"
+        Me.ПеревестиБланкиToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.ПеревестиБланкиToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
+        Me.ПеревестиБланкиToolStripMenuItem.Text = "Конвертировать"
         '
         'УказатьПапкуХраненияToolStripMenuItem
         '
         Me.УказатьПапкуХраненияToolStripMenuItem.Name = "УказатьПапкуХраненияToolStripMenuItem"
-        Me.УказатьПапкуХраненияToolStripMenuItem.Size = New System.Drawing.Size(249, 22)
-        Me.УказатьПапкуХраненияToolStripMenuItem.Text = "Указать папку хранения (Ctrl+P)"
+        Me.УказатьПапкуХраненияToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
+        Me.УказатьПапкуХраненияToolStripMenuItem.Size = New System.Drawing.Size(245, 22)
+        Me.УказатьПапкуХраненияToolStripMenuItem.Text = "Указать папку хранения"
         '
         'СервисToolStripMenuItem
         '
@@ -191,12 +201,13 @@ Partial Class SaveAsPDF
         'НастройкиToolStripMenuItem
         '
         Me.НастройкиToolStripMenuItem.Name = "НастройкиToolStripMenuItem"
-        Me.НастройкиToolStripMenuItem.Size = New System.Drawing.Size(184, 22)
-        Me.НастройкиToolStripMenuItem.Text = "Настройки (Ctrl+F3)"
+        Me.НастройкиToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.F3), System.Windows.Forms.Keys)
+        Me.НастройкиToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.НастройкиToolStripMenuItem.Text = "Настройки"
         '
         'ОПрограммеToolStripMenuItem
         '
-        Me.ОПрограммеToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.СправкаToolStripMenuItem, Me.ОПрограммеToolStripMenuItem1})
+        Me.ОПрограммеToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.СправкаToolStripMenuItem, Me.ОПрограммеToolStripMenuItem1, Me.МенеджерЛицензииToolStripMenuItem})
         Me.ОПрограммеToolStripMenuItem.Name = "ОПрограммеToolStripMenuItem"
         Me.ОПрограммеToolStripMenuItem.Size = New System.Drawing.Size(94, 20)
         Me.ОПрограммеToolStripMenuItem.Text = "О программе"
@@ -204,14 +215,16 @@ Partial Class SaveAsPDF
         'СправкаToolStripMenuItem
         '
         Me.СправкаToolStripMenuItem.Name = "СправкаToolStripMenuItem"
-        Me.СправкаToolStripMenuItem.Size = New System.Drawing.Size(172, 22)
-        Me.СправкаToolStripMenuItem.Text = "Справка (F1)"
+        Me.СправкаToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F1
+        Me.СправкаToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
+        Me.СправкаToolStripMenuItem.Text = "Справка"
         '
         'ОПрограммеToolStripMenuItem1
         '
         Me.ОПрограммеToolStripMenuItem1.Name = "ОПрограммеToolStripMenuItem1"
-        Me.ОПрограммеToolStripMenuItem1.Size = New System.Drawing.Size(172, 22)
-        Me.ОПрограммеToolStripMenuItem1.Text = "О программе (F2)"
+        Me.ОПрограммеToolStripMenuItem1.ShortcutKeys = System.Windows.Forms.Keys.F2
+        Me.ОПрограммеToolStripMenuItem1.Size = New System.Drawing.Size(188, 22)
+        Me.ОПрограммеToolStripMenuItem1.Text = "О программе"
         '
         'ProgressBar1
         '
@@ -221,6 +234,12 @@ Partial Class SaveAsPDF
         Me.ProgressBar1.Size = New System.Drawing.Size(447, 12)
         Me.ProgressBar1.TabIndex = 15
         Me.ProgressBar1.Visible = False
+        '
+        'МенеджерЛицензииToolStripMenuItem
+        '
+        Me.МенеджерЛицензииToolStripMenuItem.Name = "МенеджерЛицензииToolStripMenuItem"
+        Me.МенеджерЛицензииToolStripMenuItem.Size = New System.Drawing.Size(188, 22)
+        Me.МенеджерЛицензииToolStripMenuItem.Text = "Менеджер лицензии"
         '
         'SaveAsPDF
         '
@@ -269,4 +288,5 @@ Partial Class SaveAsPDF
     Friend WithEvents КонвертироватьВсеToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents УказатьПапкуХраненияToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ДоToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents МенеджерЛицензииToolStripMenuItem As ToolStripMenuItem
 End Class

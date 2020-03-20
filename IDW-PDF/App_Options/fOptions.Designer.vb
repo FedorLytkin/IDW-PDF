@@ -25,11 +25,11 @@ Partial Class fOptions
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(fOptions))
         Me.CheckBox1 = New System.Windows.Forms.CheckBox()
         Me.CheckBox2 = New System.Windows.Forms.CheckBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
+        Me.OK_Bt = New System.Windows.Forms.Button()
+        Me.Cancel_Bt = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.RadioButton2 = New System.Windows.Forms.RadioButton()
+        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
         Me.Panel1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -53,23 +53,25 @@ Partial Class fOptions
         Me.CheckBox2.Text = "Записывать историю операций в отчет"
         Me.CheckBox2.UseVisualStyleBackColor = True
         '
-        'Button1
+        'OK_Bt
         '
-        Me.Button1.Location = New System.Drawing.Point(78, 115)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(91, 24)
-        Me.Button1.TabIndex = 2
-        Me.Button1.Text = "Сохранить"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.OK_Bt.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.OK_Bt.Location = New System.Drawing.Point(78, 115)
+        Me.OK_Bt.Name = "OK_Bt"
+        Me.OK_Bt.Size = New System.Drawing.Size(91, 24)
+        Me.OK_Bt.TabIndex = 2
+        Me.OK_Bt.Text = "Сохранить"
+        Me.OK_Bt.UseVisualStyleBackColor = True
         '
-        'Button2
+        'Cancel_Bt
         '
-        Me.Button2.Location = New System.Drawing.Point(175, 115)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(91, 24)
-        Me.Button2.TabIndex = 3
-        Me.Button2.Text = "Отмена"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.Cancel_Bt.DialogResult = System.Windows.Forms.DialogResult.Cancel
+        Me.Cancel_Bt.Location = New System.Drawing.Point(175, 115)
+        Me.Cancel_Bt.Name = "Cancel_Bt"
+        Me.Cancel_Bt.Size = New System.Drawing.Size(91, 24)
+        Me.Cancel_Bt.TabIndex = 3
+        Me.Cancel_Bt.Text = "Отмена"
+        Me.Cancel_Bt.UseVisualStyleBackColor = True
         '
         'Panel1
         '
@@ -79,17 +81,6 @@ Partial Class fOptions
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(263, 51)
         Me.Panel1.TabIndex = 4
-        '
-        'RadioButton1
-        '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(8, 3)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(228, 17)
-        Me.RadioButton1.TabIndex = 0
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Сохранять файл PDF рядом с чертежем"
-        Me.RadioButton1.UseVisualStyleBackColor = True
         '
         'RadioButton2
         '
@@ -102,20 +93,36 @@ Partial Class fOptions
         Me.RadioButton2.Text = "Запрашивать дирректорию хранения файла"
         Me.RadioButton2.UseVisualStyleBackColor = True
         '
+        'RadioButton1
+        '
+        Me.RadioButton1.AutoSize = True
+        Me.RadioButton1.Location = New System.Drawing.Point(8, 3)
+        Me.RadioButton1.Name = "RadioButton1"
+        Me.RadioButton1.Size = New System.Drawing.Size(228, 17)
+        Me.RadioButton1.TabIndex = 0
+        Me.RadioButton1.TabStop = True
+        Me.RadioButton1.Text = "Сохранять файл PDF рядом с чертежем"
+        Me.RadioButton1.UseVisualStyleBackColor = True
+        '
         'fOptions
         '
+        Me.AcceptButton = Me.OK_Bt
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.CancelButton = Me.Cancel_Bt
         Me.ClientSize = New System.Drawing.Size(272, 143)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.Cancel_Bt)
+        Me.Controls.Add(Me.OK_Bt)
         Me.Controls.Add(Me.CheckBox2)
         Me.Controls.Add(Me.CheckBox1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.KeyPreview = True
+        Me.MaximumSize = New System.Drawing.Size(288, 182)
+        Me.MinimumSize = New System.Drawing.Size(288, 182)
         Me.Name = "fOptions"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Настройки"
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
@@ -126,8 +133,8 @@ Partial Class fOptions
 
     Friend WithEvents CheckBox1 As CheckBox
     Friend WithEvents CheckBox2 As CheckBox
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
+    Friend WithEvents OK_Bt As Button
+    Friend WithEvents Cancel_Bt As Button
     Friend WithEvents Panel1 As Panel
     Friend WithEvents RadioButton2 As RadioButton
     Friend WithEvents RadioButton1 As RadioButton

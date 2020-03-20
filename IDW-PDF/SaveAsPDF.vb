@@ -2,6 +2,11 @@
 Imports System.IO
 Imports System.Text
 Public Class SaveAsPDF
+    Public Shared ProgramID As String = "16"
+    Public Shared ProgramVersion As String
+    Public Shared ProgramVersionFlag As String = "2019"
+    Public Shared AppVersNOTValidStrong As Boolean
+
     Public SelectPath As String
     Public find_Subfolder As Boolean
     Public save_report As Boolean
@@ -17,7 +22,7 @@ Public Class SaveAsPDF
     End Sub
 
     Private Sub ОПрограммеToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ОПрограммеToolStripMenuItem1.Click
-        App_info.ShowDialog()
+        AboutBox1.ShowDialog()
     End Sub
 
     Private Sub ListBox1_DragEnter(sender As Object, e As DragEventArgs) Handles ListBox1.DragEnter
@@ -27,6 +32,10 @@ Public Class SaveAsPDF
     End Sub
 
     Private Sub ListBox1_DragDrop(sender As Object, e As DragEventArgs) Handles ListBox1.DragDrop
+        If This_Demo_App Then
+            MsgBox("Функция не доступна для демо версии!" & vbCr & "Обратитесь к разработчику", MessageBoxIcon.Error)
+            Exit Sub
+        End If
         Dim file, fileformat As String
         For Each file In e.Data.GetData(DataFormats.FileDrop)
             fileformat = file.Substring(file.LastIndexOf(".") + 1)
@@ -68,6 +77,10 @@ Public Class SaveAsPDF
             PDF_export()
         End If
     End Sub
+    Public Shared Function AppVersNOTValidStrongMessage() As Boolean
+        If Not AppVersNOTValidStrong Then MessageBox.Show($"Версия CAD-системы({ProgramVersion}) не совпадает с рекомендованной версией {ProgramVersionFlag}." & vbNewLine & $"Обновите {System.Windows.Forms.Application.ProductName} до требуемой версии CAD системы либо установите версию {ProgramVersionFlag}", System.Windows.Forms.Application.ProductName)
+        Return AppVersNOTValidStrong
+    End Function
     Sub PDF_export()
         ' Validate the input path.
         'If Not System.IO.Directory.Exists(SelectPath) Then
@@ -94,7 +107,10 @@ Public Class SaveAsPDF
                 Exit Sub
             End Try
         End If
+        ProgramVersion = invApp.ComparisonVersion
+        AppVersNOTValidStrong = System.Text.RegularExpressions.Regex.IsMatch(ProgramVersion, ProgramVersionFlag)
 
+        If AppVersNOTValidStrongMessage() Then Return
 
         ProgressBar1.Visible = True
         ProgressBar1.Minimum = 1
@@ -110,9 +126,13 @@ Public Class SaveAsPDF
         lstResults.Items.Clear()
 
         lstResults.Items.Add("=== Начало конвертации: всего " & ListBox1.Items.Count & " документов ===")
-
+        Dim valid_Integer As Integer = 0
         For Each drawing As String In ListBox1.Items
             ' Skip any drawings in an "OldVersions" directory.
+            If This_Demo_App And valid_Integer > 1 Then
+                MsgBox("В демо версии доступна выгрузка 2 элементов из Списка!" & vbCr & "Обратитесь к разработчику программы", MessageBoxIcon.Error)
+                Exit For
+            End If
             If Not drawing.Contains("OldVersions") Then
                 lstResults.Items.Add("Обработка: .\" & drawing.Substring(drawing.LastIndexOf("\") + 1))
 
@@ -154,6 +174,7 @@ Public Class SaveAsPDF
                 End If
             End If
             ProgressBar1.PerformStep()
+            valid_Integer += 1
         Next
         ProgressBar1.Visible = False
         lstResults.Items.Add("=== Конвертация завершена. ===")
@@ -170,6 +191,11 @@ Public Class SaveAsPDF
         '    Exit Sub
         'End If
         If ListBox1.Items.Count = 0 Then
+            Exit Sub
+        End If
+
+        If This_Demo_App Then
+            MsgBox("Функция не доступна для демо версии!" & vbCr & "Обратитесь к разработчику", MessageBoxIcon.Error)
             Exit Sub
         End If
         ''если сохраняем в другой папке
@@ -193,7 +219,10 @@ Public Class SaveAsPDF
                 Exit Sub
             End Try
         End If
+        ProgramVersion = invApp.ComparisonVersion
+        AppVersNOTValidStrong = System.Text.RegularExpressions.Regex.IsMatch(ProgramVersion, ProgramVersionFlag)
 
+        If AppVersNOTValidStrongMessage() Then Return
 
         ProgressBar1.Visible = True
         ProgressBar1.Minimum = 1
@@ -212,45 +241,45 @@ Public Class SaveAsPDF
         Dim drawing As String = ListBox1.SelectedItem
         ' Skip any drawings in an "OldVersions" directory.
         If Not drawing.Contains("OldVersions") Then
-                lstResults.Items.Add("Обработка: .\" & drawing.Substring(drawing.LastIndexOf("\") + 1))
+            lstResults.Items.Add("Обработка: .\" & drawing.Substring(drawing.LastIndexOf("\") + 1))
 
-                ' Make sure the list is scrolled so the bottom of the list can be seen.
-                lstResults.TopIndex = lstResults.Items.Count - 1
-                lstResults.Refresh()
+            ' Make sure the list is scrolled so the bottom of the list can be seen.
+            lstResults.TopIndex = lstResults.Items.Count - 1
+            lstResults.Refresh()
 
-                ' Open the drawing in Inventor
-                Dim drawDoc As Inventor.DrawingDocument = Nothing
-                Try
-                    invApp.SilentOperation = True
-                    drawDoc = invApp.Documents.Open(drawing)
-                    invApp.SilentOperation = False
-                Catch ex As Exception
-                End Try
+            ' Open the drawing in Inventor
+            Dim drawDoc As Inventor.DrawingDocument = Nothing
+            Try
+                invApp.SilentOperation = True
+                drawDoc = invApp.Documents.Open(drawing)
+                invApp.SilentOperation = False
+            Catch ex As Exception
+            End Try
 
-                If Not drawDoc Is Nothing Then
-                    ' Save the PDF.
+            If Not drawDoc Is Nothing Then
+                ' Save the PDF.
 
-                    Dim file_name As String = System.IO.Path.ChangeExtension(drawing, "pdf")
-                    If fOptions.get_regisrt_value("save_path_method", True) = False Then
-                        file_name = save_folder_path & file_name.Substring(file_name.LastIndexOf("\"))
-                    End If
+                Dim file_name As String = System.IO.Path.ChangeExtension(drawing, "pdf")
+                If fOptions.get_regisrt_value("save_path_method", True) = False Then
+                    file_name = save_folder_path & file_name.Substring(file_name.LastIndexOf("\"))
+                End If
 
-                    If SaveAsPDF(drawDoc, file_name) Then
-                        lstResults.Items(lstResults.Items.Count - 1) = "Успешно обработано: .\" & drawing.Substring(drawing.LastIndexOf("\") + 1)
-                    Else
-                        lstResults.Items(lstResults.Items.Count - 1) = "Ошибка при обработке: .\" & drawing.Substring(drawing.LastIndexOf("\") + 1)
-                    End If
+                If SaveAsPDF(drawDoc, file_name) Then
+                    lstResults.Items(lstResults.Items.Count - 1) = "Успешно обработано: .\" & drawing.Substring(drawing.LastIndexOf("\") + 1)
                 Else
                     lstResults.Items(lstResults.Items.Count - 1) = "Ошибка при обработке: .\" & drawing.Substring(drawing.LastIndexOf("\") + 1)
                 End If
-                lstResults.TopIndex = lstResults.Items.Count - 1
-                lstResults.Refresh()
-
-                ' Close the drawing.
-                If Not drawDoc Is Nothing Then
-                    drawDoc.Close(True)
-                End If
+            Else
+                lstResults.Items(lstResults.Items.Count - 1) = "Ошибка при обработке: .\" & drawing.Substring(drawing.LastIndexOf("\") + 1)
             End If
+            lstResults.TopIndex = lstResults.Items.Count - 1
+            lstResults.Refresh()
+
+            ' Close the drawing.
+            If Not drawDoc Is Nothing Then
+                drawDoc.Close(True)
+            End If
+        End If
         ProgressBar1.PerformStep()
         ProgressBar1.Visible = False
         lstResults.Items.Add("=== Конвертация завершена. ===")
@@ -321,7 +350,7 @@ Public Class SaveAsPDF
     End Sub
     Public Sub Write_Report_txt(text As String)
         Dim file As System.IO.StreamWriter
-        file = My.Computer.FileSystem.OpenTextFileWriter(Path, True)
+        file = My.Computer.FileSystem.OpenTextFileWriter(path, True)
         file.WriteLine(text)
         file.Close()
     End Sub
@@ -342,54 +371,6 @@ Public Class SaveAsPDF
         ListBox1.Items.Remove(ListBox1.SelectedItems)
     End Sub
 
-    Private Sub SaveAsPDF_KeyDown(sender As Object, e As KeyEventArgs) Handles MyBase.KeyDown
-        If e.Control Or e.Alt Or e.Shift Or e.KeyCode = 13 Or e.KeyCode = 91 Or e.KeyCode = 92 Then
-            e.SuppressKeyPress = True
-        End If
-
-        If e.Control And e.KeyCode.ToString = "O" Then
-            Me.KeyPreview = False
-            import_drawing()
-        ElseIf e.Control And e.KeyCode.ToString = "Delete" Then
-            Me.KeyPreview = False
-            ListBox1.Items.Clear()
-        ElseIf e.Control And e.KeyCode.ToString = "F3" Then
-            Me.KeyPreview = False
-            fOptions.ShowDialog()
-        ElseIf e.Control And e.KeyCode.ToString = "Enter" Then
-            Me.KeyPreview = False
-            PDF_export()
-        ElseIf e.Shift And e.KeyCode.ToString = "Enter" Then
-            Me.KeyPreview = False
-            PDF_export_ONE_DRAWING()
-        ElseIf e.Alt And e.KeyCode.ToString = "Enter" Then
-            Me.KeyPreview = False
-            open_drawind()
-        ElseIf e.Control And e.KeyCode.ToString = "P" Then
-            Me.KeyPreview = False
-            If fOptions.get_regisrt_value("save_path_method", True) = False Then
-                select_save_folder_path()
-            End If
-        End If
-
-        If e.Alt And e.KeyCode.ToString = "Enter" Then
-            Me.KeyPreview = False
-            open_drawind()
-        End If
-        If e.Shift And e.KeyCode.ToString = "Enter" Then
-            Me.KeyPreview = False
-            PDF_export_ONE_DRAWING()
-        End If
-        Select Case e.KeyCode
-            Case Keys.F1
-                Me.KeyPreview = False
-                INFOrmation()
-            Case Keys.F2
-                Me.KeyPreview = False
-                App_info.ShowDialog()
-        End Select
-        Me.KeyPreview = True
-    End Sub
 
     Private Sub ListBox1_KeyDown(sender As Object, e As KeyEventArgs) Handles ListBox1.KeyDown
         If e.KeyCode = Keys.Delete Then
@@ -426,6 +407,11 @@ Public Class SaveAsPDF
                 Exit Sub
             End Try
         End If
+        ProgramVersion = invApp.ComparisonVersion
+        AppVersNOTValidStrong = System.Text.RegularExpressions.Regex.IsMatch(ProgramVersion, ProgramVersionFlag)
+
+        If AppVersNOTValidStrongMessage() Then Return
+
         Dim Drawing As String = ListBox1.SelectedItem
         ' Open the drawing in Inventor
         Dim drawDoc As Inventor.DrawingDocument = Nothing
@@ -501,7 +487,23 @@ Public Class SaveAsPDF
         End If
     End Sub
 
+    Private Sub SaveAsPDF_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        DemoVers_StartWindows()
+    End Sub
+    Private Sub DemoVers_StartWindows()
+        Dim CryptoClass_ As CryptoClass = New CryptoClass()
+        This_Demo_App = CryptoClass_.Form_LoadTrue(True)
 
+        If This_Demo_App Then
+            Me.Text = System.Windows.Forms.Application.ProductName & " v" + System.Windows.Forms.Application.ProductVersion & $" (Inventor {ProgramVersion})" & " !!!This DemoVersion!!!"
+            КонвертироватьВыделенноеToolStripMenuItem.Enabled = False
+            МенеджерЛицензииToolStripMenuItem.Visible = True
+        Else
+            Me.Text = System.Windows.Forms.Application.ProductName & " v" + System.Windows.Forms.Application.ProductVersion & $" (Inventor {ProgramVersion})"
+            КонвертироватьВыделенноеToolStripMenuItem.Enabled = True
+            МенеджерЛицензииToolStripMenuItem.Visible = False
+        End If
+    End Sub
     Sub select_save_folder_path()
         Dim dir As String = ""
         Dim fb As New FolderBrowserDialog
