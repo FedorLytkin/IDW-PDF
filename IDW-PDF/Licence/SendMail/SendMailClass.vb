@@ -20,7 +20,7 @@ Public Class SendMailClass
         addLogFile()
     End Sub
     Sub SendMailProc(withAtttach As Boolean, MailText As String)
-        Dim from As MailAddress = New MailAddress(MailAddressFrom, Application.ProductName)
+        Dim from As MailAddress = New MailAddress(MailAddressFrom, Application.ProductName & $" Inventor {SaveAsPDF.ProgramVersionFlag}")
         Dim adresat As MailAddress = New MailAddress(MailAddressTo)
         Dim m As MailMessage = New MailMessage(from, adresat)
         m.Subject = Application.ProductName & " " + Application.ProductVersion & " " + Environment.MachineName

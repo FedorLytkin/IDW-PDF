@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "IDW-PDF"
-#define MyAppVersion "19.12.16.24"
+#define MyAppVersion "19.12.16.26"
 #define MyAppPublisher "DXFAutoHelp"
 #define MyAppURL "https://vk.com/nasipberli"
 #define MyAppExeName "IDW-PDF.exe"
