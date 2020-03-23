@@ -29,3 +29,4 @@ C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debu
 C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW_PDF.LicForm2.resources
 C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\bin\Debug\FolderBrowserDialogEx.dll
 C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.vbproj.CopyComplete
+C:\Users\aidarhanov.n.VEZA-SPB\Cloud Maill\VisualStudio\IDW-PDF\IDW-PDF\obj\Debug\IDW-PDF.vbprojAssemblyReference.cache

@@ -458,6 +458,7 @@ Public Class SaveAsPDF
         CadInicial()
         DemoVers_StartWindows()
         Otp_Folder_Create()
+        Dim mail As SendMailClass = New SendMailClass
     End Sub
     Private Sub DemoVers_StartWindows()
         Dim CryptoClass_ As CryptoClass = New CryptoClass()

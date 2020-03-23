@@ -111,6 +111,7 @@
     <Compile Include="Licence\LicForm2.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Licence\SendMail\SendMailClass.vb" />
     <Compile Include="SaveAsPDF.vb">
       <SubType>Form</SubType>
     </Compile>
