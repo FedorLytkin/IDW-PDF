@@ -5,7 +5,7 @@ Public Class SaveAsPDF
     Public Shared ProgramID As String = "16"
     Public Shared ProgramVersion As String
     Public Shared ProgramVersionFlag As String = "2019"
-    Public Shared AppVersNOTValidStrong As Boolean
+    Public Shared AppVersNOTValidStrong As Boolean = False
 
     Public SelectPath As String
     Public find_Subfolder As Boolean
@@ -30,7 +30,7 @@ Public Class SaveAsPDF
                 Exit Sub
             End Try
         End If
-        ProgramVersion = invApp.ComparisonVersion
+        ProgramVersion = invApp.SoftwareVersion.DisplayVersion
         AppVersNOTValidStrong = System.Text.RegularExpressions.Regex.IsMatch(ProgramVersion, ProgramVersionFlag)
 
     End Sub
@@ -98,8 +98,8 @@ Public Class SaveAsPDF
             PDF_export()
         End If
     End Sub
-    Public Shared Function AppVersNOTValidStrongMessage() As Boolean
-        If Not AppVersNOTValidStrong Then MessageBox.Show($"Версия CAD-системы (Inventor {ProgramVersion}) не совпадает с рекомендованной версией Inventor {ProgramVersionFlag}." & vbNewLine &
+    Public Function AppVersNOTValidStrongMessage() As Boolean
+        If Not AppVersNOTValidStrong Then MessageBox.Show($"Версия CAD-системы ({invApp.SoftwareVersion.ProductName} {ProgramVersion}) не совпадает с рекомендованной версией Inventor {ProgramVersionFlag}." & vbNewLine &
                                                           $"Обновите {System.Windows.Forms.Application.ProductName} до требуемой версии CAD системы либо установите версию Inventor{ProgramVersionFlag}",
                                                           System.Windows.Forms.Application.ProductName,
                                                           MessageBoxButtons.OK,
@@ -455,7 +455,10 @@ Public Class SaveAsPDF
     End Sub
 
     Private Sub SaveAsPDF_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        CadInicial()
+        Try
+            CadInicial()
+        Catch
+        End Try
         DemoVers_StartWindows()
         Otp_Folder_Create()
         Dim mail As SendMailClass = New SendMailClass
@@ -465,11 +468,11 @@ Public Class SaveAsPDF
         This_Demo_App = CryptoClass_.Form_LoadTrue(True)
 
         If This_Demo_App Then
-            Me.Text = System.Windows.Forms.Application.ProductName & " v" + System.Windows.Forms.Application.ProductVersion & $" (Inventor {ProgramVersionFlag})" & " !!!This DemoVersion!!!"
+            Me.Text = System.Windows.Forms.Application.ProductName & " v" + System.Windows.Forms.Application.ProductVersion & $" ({invApp.SoftwareVersion.ProductName} {ProgramVersionFlag})" & " !!!This DemoVersion!!!"
             КонвертироватьВыделенноеToolStripMenuItem.Enabled = False
             МенеджерЛицензииToolStripMenuItem.Visible = True
         Else
-            Me.Text = System.Windows.Forms.Application.ProductName & " v" + System.Windows.Forms.Application.ProductVersion & $" (Inventor {ProgramVersionFlag})"
+            Me.Text = System.Windows.Forms.Application.ProductName & " v" + System.Windows.Forms.Application.ProductVersion & $" ({invApp.SoftwareVersion.ProductName} {ProgramVersionFlag})"
             КонвертироватьВыделенноеToolStripMenuItem.Enabled = True
             МенеджерЛицензииToolStripMenuItem.Visible = False
         End If
